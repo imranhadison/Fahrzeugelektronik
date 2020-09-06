@@ -1,0 +1,303 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                 Marquardt GmbH
+                                                                              */
+/*                            All rights reserved                             */
+/*                                                                            */
+/* ************************************************************************** */
+/*                                                                            */
+/*  Description:   LIN Description file                                       */
+/*                 Für OBF A 218 870 86 10                                    */
+/*                 Reduziertes LDF-File für Hoch
+/*  Release:       2011-42a                                                   */
+/*                                                                            */
+/*  Engineer:      adrosso                                                    */
+/*  Creation Date: 2008-12-04                                                 */
+/*  Status:        IN PROCESS                                                 */
+/*                                                                            */
+/* ************************************************************************** */
+
+LIN_description_file;
+LIN_protocol_version = "2.1";
+LIN_language_version = "2.1";
+LIN_speed = 19.2 kbps;
+
+Nodes {
+  Master: MASTER, 5 ms, 0 ms ;
+  Slaves: OBF ;
+}
+
+Signals {
+  COD_IndLmp_Rq: 2, 3, MASTER, OBF ;
+  EF_Actv: 1, 0, MASTER, OBF ;
+  EF_Sw_Psd: 1, 0, OBF, MASTER ;
+  ICH_HtVnSw_Psd: 1, 0, OBF, MASTER ;
+  ICH_HtVn_Actv: 1, 0, MASTER, OBF ;
+  ICH_LED_Rd_Flt: 1, 0, OBF, MASTER ;
+  ICH_LED_Ye_Flt: 1, 0, OBF, MASTER ;
+  ICH_PreTm_Actv: 1, 0, MASTER, OBF ;
+  ICH_Rq: 2, 0, MASTER, OBF ;
+  ISw_Stat: 3, 7, MASTER, OBF ;
+  LgtSens_Night: 1, 0, MASTER, OBF ;
+  PTS_SwLED_Rq: 2, 3, MASTER, OBF ;
+  PTS_Sw_Psd: 2, 3, OBF, MASTER ;
+  RB_R_Sw_Psd: 2, 0, OBF, MASTER ;
+  RsErr_OBF: 1, 0, OBF, MASTER ;
+  RsErr_EFS: 1, 0, OBF, MASTER ;
+  SSA_ECO_Sw_LED_On_Rq: 2, 3, MASTER, OBF ;
+  SSA_ECO_Sw_Psd_OBF: 2, 3, OBF, MASTER ;
+  SeatHt_FL_Pos_Rq: 1, 0, OBF, MASTER ;
+  SeatHt_FL_Stat: 2, 0, MASTER, OBF ;
+  SeatHt_FR_Pos_Rq: 1, 0, OBF, MASTER ;
+  SeatHt_FR_Stat: 2, 0, MASTER, OBF ;
+  SupVolt_OutOfRng: 1, 0, MASTER, OBF ;
+  SwIllLvl: 8, 100, MASTER, OBF ;
+  SwRed_OBF: 2, 3, OBF, MASTER ;
+  SwRed_EFS: 2, 3, OBF, MASTER ;
+  TurnLmpOnDur: 8, 34, MASTER, OBF ;
+  TxmtSync_Actv: 1, 0, MASTER, OBF ;
+  VTA_Actv: 1, 0, MASTER, OBF ;
+  WakeupStat_OBF: 2, 3, OBF, MASTER ;
+  WakeupStat_EFS: 2, 3, OBF, MASTER ;
+}
+
+Diagnostic_signals {
+  MasterReqB0: 8, 0 ;
+  MasterReqB1: 8, 0 ;
+  MasterReqB2: 8, 0 ;
+  MasterReqB3: 8, 0 ;
+  MasterReqB4: 8, 0 ;
+  MasterReqB5: 8, 0 ;
+  MasterReqB6: 8, 0 ;
+  MasterReqB7: 8, 0 ;
+  SlaveRespB0: 8, 0 ;
+  SlaveRespB1: 8, 0 ;
+  SlaveRespB2: 8, 0 ;
+  SlaveRespB3: 8, 0 ;
+  SlaveRespB4: 8, 0 ;
+  SlaveRespB5: 8, 0 ;
+  SlaveRespB6: 8, 0 ;
+  SlaveRespB7: 8, 0 ;
+}
+
+
+
+Frames {
+  MASTER_Frm1: 0, MASTER, 6 {
+    LgtSens_Night, 0 ;
+    SupVolt_OutOfRng, 1 ;
+    COD_IndLmp_Rq, 5 ;
+    SwIllLvl, 8 ;
+    TurnLmpOnDur, 16 ;
+    EF_Actv, 24 ;
+    VTA_Actv, 26 ;
+    ISw_Stat, 27 ;
+  }
+  MASTER_Frm2: 1, MASTER, 6 {
+    SeatHt_FL_Stat, 0 ;
+    PTS_SwLED_Rq, 5 ;
+    SeatHt_FR_Stat, 8 ;
+    ICH_HtVn_Actv, 15 ;
+    SSA_ECO_Sw_LED_On_Rq, 30 ;
+    TxmtSync_Actv, 32 ;
+    ICH_PreTm_Actv, 33 ;
+    ICH_Rq, 34 ;
+  }
+  OBF_Frm2: 2, OBF, 1 {
+    SwRed_EFS, 2 ;
+    WakeupStat_EFS, 4 ;
+    EF_Sw_Psd, 6 ;
+    RsErr_EFS, 7 ;
+  }
+  OBF_Frm1: 32, OBF, 5 {
+    WakeupStat_OBF, 0 ;
+    PTS_Sw_Psd, 2 ;
+    RB_R_Sw_Psd, 4 ;
+    SwRed_OBF, 10 ;
+    RsErr_OBF, 12 ;
+    SeatHt_FL_Pos_Rq, 14 ;
+    SeatHt_FR_Pos_Rq, 15 ;
+    ICH_HtVnSw_Psd, 20 ;
+    ICH_LED_Rd_Flt, 26 ;
+    ICH_LED_Ye_Flt, 27 ;
+    SSA_ECO_Sw_Psd_OBF, 28 ;
+  }
+}
+
+
+
+Diagnostic_frames {
+  MasterReq: 0x3c {
+    MasterReqB0, 0 ;
+    MasterReqB1, 8 ;
+    MasterReqB2, 16 ;
+    MasterReqB3, 24 ;
+    MasterReqB4, 32 ;
+    MasterReqB5, 40 ;
+    MasterReqB6, 48 ;
+    MasterReqB7, 56 ;
+  }
+  SlaveResp: 0x3d {
+    SlaveRespB0, 0 ;
+    SlaveRespB1, 8 ;
+    SlaveRespB2, 16 ;
+    SlaveRespB3, 24 ;
+    SlaveRespB4, 32 ;
+    SlaveRespB5, 40 ;
+    SlaveRespB6, 48 ;
+    SlaveRespB7, 56 ;
+  }
+}
+
+Node_attributes {
+  OBF{
+    LIN_protocol = "2.1" ;
+    configured_NAD = 0x3 ;
+    initial_NAD = 0x3 ;
+    product_id = 0x3F, 0x2000, 0 ;
+    response_error = RsErr_OBF ;
+    P2_min = 100 ms ;
+    ST_min = 0 ms ;
+    N_As_timeout = 1000 ms ;
+    N_Cr_timeout = 1000 ms ;
+    configurable_frames {
+      OBF_Frm1 ;
+      OBF_Frm2 ;
+      MASTER_Frm1 ;
+      MASTER_Frm2 ;
+    }
+  }
+}
+
+Schedule_tables {
+ sch_normal {
+    OBF_Frm2 delay 5 ms ;
+    MASTER_Frm1 delay 10 ms ;
+    OBF_Frm1 delay 10 ms ;
+    OBF_Frm2 delay 5 ms ;
+    MASTER_Frm1 delay 10 ms ;
+    MASTER_Frm2 delay 10 ms ;
+    OBF_Frm2 delay 5 ms ;
+    MASTER_Frm1 delay 10 ms ;
+    OBF_Frm1 delay 10 ms ;
+    OBF_Frm2 delay 5 ms ;
+    MASTER_Frm1 delay 10 ms ;
+    MASTER_Frm2 delay 10 ms ;
+  }
+}
+
+
+Signal_encoding_types {
+  c01_LgtSens_Night {
+    logical_value, 0, "DAY" ;
+    logical_value, 1, "NIGHT" ;
+  }
+  c02_ICH_Req {
+    logical_value, 0, "PASSIVE" ;
+    logical_value, 1, "HEAT" ;
+    logical_value, 2, "VENTILATE" ;
+    logical_value, 3, "NDEF3" ;
+  }
+  c02_Lgt_Off_Cont_Blink {
+    logical_value, 0, "OFF" ;
+    logical_value, 1, "CONT" ;
+    logical_value, 2, "BLINK" ;
+    logical_value, 3, "SNA" ;
+  }
+  c02_Ndef_Npsd_Psd {
+    logical_value, 0, "NDEF0" ;
+    logical_value, 1, "NPSD" ;
+    logical_value, 2, "PSD" ;
+    logical_value, 3, "SNA" ;
+  }
+  c02_NPsd_Psd {
+    logical_value, 0, "NPSD" ;
+    logical_value, 1, "NDEF1" ;
+    logical_value, 2, "PSD" ;
+    logical_value, 3, "SNA" ;
+  }
+  c02_NPsd_Psd_NDef {
+    logical_value, 0, "NPSD" ;
+    logical_value, 1, "PSD" ;
+    logical_value, 2, "NDEF2" ;
+    logical_value, 3, "SNA" ;
+  }
+  c02_Off_On {
+    logical_value, 0, "OFF" ;
+    logical_value, 1, "ON" ;
+    logical_value, 2, "NDEF2" ;
+    logical_value, 3, "SNA" ;
+  }
+  c02_SeatHt_Stat {
+    logical_value, 0, "SH_OFF" ;
+    logical_value, 1, "SH_STEP1" ;
+    logical_value, 2, "SH_STEP2" ;
+    logical_value, 3, "SH_STEP3" ;
+  }
+  c02_WakeUp_Stat {
+    logical_value, 0, "NO_WUP" ;
+    logical_value, 1, "ACTIVE_WUP" ;
+    logical_value, 2, "NDEF2" ;
+    logical_value, 3, "SNA" ;
+  }
+  c03_ISw_Stat {
+    logical_value, 0, "IGN_LOCK" ;
+    logical_value, 1, "IGN_OFF" ;
+    logical_value, 2, "IGN_ACC" ;
+    logical_value, 4, "IGN_ON" ;
+    logical_value, 5, "IGN_START" ;
+    logical_value, 7, "SNA" ;
+  }
+  c08_ms_0_2500_10 {
+    physical_value, 0, 250, 10, 0, "ms" ;
+    logical_value, 255, "SNA" ;
+  }
+  c08_perc_0_100_1 {
+    physical_value, 0, 100, 1, 0, "%" ;
+    logical_value, 255, "SNA" ;
+  }
+  c03_DateTm_Stat {
+    logical_value, 0, "INVALID" ;
+    logical_value, 1, "INIT" ;
+    logical_value, 2, "PLAUSIBLE" ;
+    logical_value, 3, "NEW" ;
+    logical_value, 4, "DIAG" ;
+    logical_value, 7, "SNA" ;
+  }
+  c08_h_0_23_1 {
+    physical_value, 0, 23, 1, 0, "h" ;
+    logical_value, 255, "SNA" ;
+  }
+  c08_min_0_59_1 {
+    physical_value, 0, 59, 1, 0, "min" ;
+    logical_value, 255, "SNA" ;
+  }
+  c08_s_0_59_1 {
+    physical_value, 0, 59, 1, 0, "s" ;
+    logical_value, 255, "SNA" ;
+  }
+  c08_h_0_23_1_nSNA {
+    physical_value, 0, 23, 1, 0, "h" ;
+  }
+  c08_min_0_59_1_nSNA {
+    physical_value, 0, 59, 1, 0, "min" ;
+  }
+  c08_s_0_59_1_SNA_na {
+    physical_value, 0, 59, 1, 0, "s" ;
+  }
+}
+
+Signal_representation {
+  c01_LgtSens_Night: LgtSens_Night ;
+  c02_ICH_Req: ICH_Rq ;
+  c02_Lgt_Off_Cont_Blink: COD_IndLmp_Rq, PTS_SwLED_Rq ;
+  c02_Ndef_Npsd_Psd: SwRed_OBF, SwRed_EFS ;
+  c02_NPsd_Psd: PTS_Sw_Psd ;
+  c02_NPsd_Psd_NDef: RB_R_Sw_Psd, SSA_ECO_Sw_Psd_OBF ;
+  c02_Off_On: SSA_ECO_Sw_LED_On_Rq ;
+  c02_SeatHt_Stat: SeatHt_FL_Stat, SeatHt_FR_Stat ;
+  c02_WakeUp_Stat: WakeupStat_OBF, WakeupStat_EFS ;
+  c03_ISw_Stat: ISw_Stat ;
+  c08_ms_0_2500_10: TurnLmpOnDur ;
+  c08_perc_0_100_1: SwIllLvl ;
+}

@@ -1,0 +1,23 @@
+/*@!Encoding:1252*/
+includes
+{
+}
+variables
+{
+  message TIM tmp_TIM;
+}
+
+
+on sysvar Status_Warnblinker 
+ {
+   
+    tmp_TIM.Turnlnd_LT_ON = 1;
+    tmp_TIM.Turnlnd_RT_ON = 1;
+ }
+
+on timer_680ms
+ {
+   
+  output(tmp_TIM);
+  
+ }
